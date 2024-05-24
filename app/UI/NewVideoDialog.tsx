@@ -17,23 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import revalidateHomePage from "./RevalidateAction";
-
-async function postAllVideos(title: string, description: string, url: string) {
-    const res = await fetch('https://take-home-assessment-423502.uc.r.appspot.com/api/videos', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            user_id: "scott_shaw",
-            description: description,
-            video_url: url,
-            title: title
-        })
-    })
-    if (!res.ok) {
-        throw new Error('Failed to fetch data')
-    }
-    return res.json()
-}
+import { postAllVideos } from "../Data/APICalls";
 
 export const NewVideoDialog = () => {
     const [title, setTitle] = useState<string>("")

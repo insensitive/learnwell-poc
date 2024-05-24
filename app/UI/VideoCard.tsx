@@ -11,43 +11,15 @@ import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { CommentInput } from './CommentInput';
+import { getAllCommentsPerVideo } from '../Data/APICalls';
+import { commentObject, videoObject } from '../Types/DataTypes';
+import Link from 'next/link'
 
-
-
-export type videoObject = {
-    created_at: string,
-    video_url: string,
-    user_id: string,
-    description: string,
-    title: string,
-    num_comments: number,
-    id: string
-}
-
-type commentObject = {
-    created_at: string,
-    content: string,
-    user_id: string,
-    video_id: string,
-    id: string
-}
-
-async function getAllCommentsPerVideo(videoId: string) {
-    const res = await fetch('https://take-home-assessment-423502.uc.r.appspot.com/api/videos/comments?video_id=' + videoId, {
-        method: "GET"
-    })
-    if (!res.ok) {
-        throw new Error('Failed to fetch data')
-    }
-    return res.json()
-}
 
 export const VideoCard = async ({ videoObj }: { videoObj: videoObject }) => {
     const data = await getAllCommentsPerVideo(videoObj.id)
@@ -57,7 +29,9 @@ export const VideoCard = async ({ videoObj }: { videoObj: videoObject }) => {
                 <Video src={videoObj.video_url} className="rounded-lg w-full" />
             </CardHeader>
             <CardContent>
-                <CardTitle className="mt-5">{videoObj.title}</CardTitle>
+                <CardTitle className="mt-5 hover:underline text-green-500">
+                    <Link href={`/video/${videoObj.id}`}>{videoObj.title}</Link>
+                </CardTitle>
                 <CardDescription className="mt-4 mb-[-15px]">{videoObj.description}</CardDescription>
             </CardContent>
             <CardFooter className="mt-auto justify-self-end">
