@@ -39,9 +39,10 @@ export const NewVideoDialog = () => {
             <div className="mb-5 relative">
                 <Image
                     src={LogoColor}
-                    alt="Picture of the author"
-                    className="w-40"
+                    alt="Kidswell logo"
+                    className="h-12 w-12 object-cover object-left"
                 />
+                <span className="absolute left-14 top-1 text-3xl font-semibold text-[#45b39d]">Kidswell</span>
                 <p className="text-xs absolute hidden md:block md:top-[38px] md:left-[50px] text-slate-500 w-max">The first learning place for your kids</p>
             </div>
             <div className="flex gap-2">
