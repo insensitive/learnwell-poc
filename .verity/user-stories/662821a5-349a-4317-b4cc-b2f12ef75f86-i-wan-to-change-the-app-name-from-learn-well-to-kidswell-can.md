@@ -1,6 +1,6 @@
 # I wan to change the app name from Learn well to KidsWell. Can you update all the
 
-<!-- verity-story-sync {"storyId":"662821a5-349a-4317-b4cc-b2f12ef75f86","version":1,"origin":"verity"} -->
+<!-- verity-story-sync {"storyId":"662821a5-349a-4317-b4cc-b2f12ef75f86","version":2,"origin":"verity"} -->
 
 - Story ID: `662821a5-349a-4317-b4cc-b2f12ef75f86`
 - Status: `proposed`
