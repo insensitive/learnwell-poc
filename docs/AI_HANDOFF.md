@@ -13,5 +13,51 @@ It is intended to give new developers and AI agents immediate, accurate context.
 - Monitor, command router, auto-fix, deploy, and rollout paths must stop on duplicates, no-diff attempts, same-failure fingerprints, paused projects, and attempt/budget limits.
 
 <!-- verity:auto-handoff:start -->
-_(run `python scripts/sync_repo_docs.py` to populate this section)_
+## Snapshot
+- Repository: `insensitive/learnwell-poc`
+- Default branch: `main`
+- Commit: `826c8e428fe8e4d774c7c38dfcefd55d78640f06`
+- Commit date: `2026-08-18T19:26:24Z`
+
+## Start Here
+1. Read `AGENTS.md`.
+2. Read `.verity/config.yml`.
+3. Read `docs/REPO_CONTEXT.md`.
+4. Read `docs/use-cases.md`.
+
+## Run Commands
+Setup:
+_(none configured)_
+Tests:
+_(none configured)_
+Build:
+_(none configured)_
+Deploy:
+_(none configured)_
+
+## Key Paths
+- `AGENTS.md`
+- `README.md`
+- `.verity/config.yml`
+- `docs/REPO_CONTEXT.md`
+- `docs/AI_HANDOFF.md`
+- `docs/use-cases.md`
+- `scripts`
+- `.github/workflows`
+
+## Workflow Index
+- `codex-deploy.yml`
+- `codex-dev-cycle.yml`
+- `codex-pr-review.yml`
+- `codex-test-generation.yml`
+- `codex-test-to-issue.yml`
+- `codex-usecase-generation.yml`
+- `verity-auto-docs.yml`
+- `verity-builder-plan.yml`
+- `verity-command-router.yml`
+- `verity-guardrails.yml`
+- `verity-monitor.yml`
+- `verity-post-merge-validation.yml`
+- `verity-pr-auto-fix.yml`
+- `verity-repo-context-builder.yml`
 <!-- verity:auto-handoff:end -->
