@@ -1,3 +1,9 @@
+# Learnwell
+
+Learnwell is a lightweight learning-video library for parents and children. It lets visitors
+browse and play educational videos, open a focused lesson page, read and post comments, and lets
+the displayed contributor add new lessons by direct `.mp4` URL.
+
 # Architecture
 - Whole Application is built using Next.js (App Router). And only the required components are client rendered, rest of the parts are server rendered
 - One of the most important piece of the app (Video Player) is implemented using a package called Next Video
