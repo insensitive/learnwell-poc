@@ -1,0 +1,113 @@
+version: 2
+verity:
+  project_id: "a1cb44fa-5965-4546-91db-228a7e81af8d"
+  callback_url: "https://szfu8h6spk.execute-api.us-east-1.amazonaws.com/staging/api/callbacks/github-actions"
+  bootstrap_version: "v2"
+  max_generated_stories: 500
+  runtime_rollout:
+    channel: stable
+    canary_required: true
+    stable_promotion: manual
+    preserve_project_values: true
+
+models:
+  default: "gpt-5.5"
+  planner: "gpt-5.5"
+  summarizer: "gpt-5.5"
+  duplicate_triage: "gpt-5.5"
+  coding: "gpt-5.5"
+  hard_coding: "gpt-5.5"
+  pr_review: "gpt-5.5"
+  resolution_order:
+    - project
+    - tenant
+    - environment
+    - default
+
+commands:
+  setup: []
+  test: []
+  build: []
+  deploy: []
+  test_groups:
+    unit: []
+    integration: []
+    e2e: []
+  command_groups:
+    unit: []
+    integration: []
+    e2e: []
+    build: []
+
+automation:
+  mode: manual
+  paused: false
+  auto_create_github_issue: false
+  auto_create_pr: false
+  auto_fix_failed_prs: false
+  auto_merge_pr: false
+  auto_deploy_on_merge: false
+  stop_on_human_assign: true
+  require_human_review: true
+  limits:
+    max_active_runs: 6
+    max_daily_actions_per_project: 40
+    max_workflow_dispatches_per_hour: 8
+    max_attempts_per_feedback: 3
+    max_attempts_per_pr: 3
+  duplicate_policy:
+    exact: block
+    high_confidence: link
+    medium_confidence: manual_review
+    service_failure: manual_review
+  workflow_enablement:
+    command_router: false
+    monitor_dispatches_dev_cycle: false
+    pr_auto_fix: false
+    test_to_issue: false
+  test_auto_fix:
+    enabled: false
+    max_attempts: 3
+    post_merge_validation: true
+    pr_triggers:
+      - "opened"
+      - "synchronize"
+      - "reopened"
+  e2e:
+    enabled: "auto"
+    command: []
+    start_command: ""
+    base_url: ""
+    base_url_env: "PLAYWRIGHT_BASE_URL"
+    required_env: []
+
+context_kernel:
+  enabled: true
+  artifact_dir: ".verity/kernel"
+  keep_raw_inputs_local: true
+  send_redacted_receipts: true
+  receipts:
+    include_files: false
+    include_raw_logs: false
+    include_raw_prompts: false
+  token_reduction_target: "50-80%"
+
+policies:
+  pr_review:
+    enabled: true
+    label_required: "verity:agent"
+  openai_guardrail:
+    enabled: true
+  documentation:
+    auto_mode: true
+    handoff_file: "docs/AI_HANDOFF.md"
+  deploy:
+    enabled: false
+    production_manual: true
+    cooldown_minutes: 30
+    duplicate_ref_policy: block
+    allow_bootstrap_runtime_deploys: false
+  privacy:
+    redact_secrets: true
+    send_raw_source_to_verity: false
+    send_raw_logs_to_verity: false
